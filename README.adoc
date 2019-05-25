@@ -1,0 +1,15 @@
+= SLL-Proxy
+Frank Rahn <https://github.com/frank-rahn[@frank-rahn]>
+:toc:
+:toclevels: 3
+:toc-title: Inhaltsverzeichnis
+:sectanchors:
+
+Demo Projekt eines SLL-Proxy auf Basis von Spring Boot.
+
+image:https://img.shields.io/badge/license-Apache_License_2-blue.svg[title="Apache License 2", alt="Apache License 2", link="https://www.apache.org/licenses/LICENSE-2.0"]
+
+toc::[]
+
+== Homepage des Autors
+https://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=sll-proxy&utm_content=top[Frank W. Rahn]

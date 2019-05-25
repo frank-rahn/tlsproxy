@@ -1,15 +1,22 @@
 = Getting Started
 Frank Rahn <https://github.com/frank-rahn[@frank-rahn]>
+:toc:
+:toclevels: 3
+:toc-title: Inhaltsverzeichnis
+:sectanchors:
 
 == Reference Documentation
 For further reference, please consider the following sections:
 
 * https://maven.apache.org/guides/index.html[Official Apache Maven documentation]
 
-== Guides
+== Spring Guides
 The following guides illustrate how to use some features concretely:
 
 * https://spring.io/guides/gs/actuator-service/[Building a RESTful Web Service with Spring Boot Actuator]
 * https://spring.io/guides/gs/rest-service/[Building a RESTful Web Service]
 * https://spring.io/guides/gs/serving-web-content/[Serving Web Content with Spring MVC]
 * https://spring.io/guides/tutorials/bookmarks/[Building REST services with Spring]
+
+== Homepage des Autors
+https://www.frank-rahn.de/?utm_source=github&utm_medium=help&utm_campaign=sll-proxy&utm_content=top[Frank W. Rahn]
