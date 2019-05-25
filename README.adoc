@@ -3,6 +3,7 @@ Frank Rahn <https://github.com/frank-rahn[@frank-rahn]>
 :toc:
 :toclevels: 3
 :toc-title: Inhaltsverzeichnis
+:toc-placement!:
 :sectanchors:
 
 Demo Projekt eines SLL-Proxy auf Basis von Spring Boot.
