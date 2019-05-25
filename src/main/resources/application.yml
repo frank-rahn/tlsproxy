@@ -1,1 +1,38 @@
+info:
+  application:
+    name: @project.name@
+    groupId: @project.groupId@
+    artifactId: @project.artifactId@
+    version: @project.version@
+    description: @project.description@
 
+spring:
+  application:
+    name: ${info.application.name}
+
+server:
+  port: 8080
+#  port: 8443
+#  ssl:
+#    key-store: classpath:keystore.jks
+#    key-store-password: 1234abc
+#    key-alias: localhost
+#    key-password: 1234abc
+#    trust-store: classpath:truststore.jks
+#    trust-store-password: 1234abc
+#    client-auth: need
+
+zuul:
+  routes:
+    products:
+      path: /**
+      url: https://www.frank-rahn.de/
+
+logging:
+  level:
+    de:
+      rahn:
+        net:
+          proxy:
+            sllproxy:
+              config: debug
