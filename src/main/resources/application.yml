@@ -9,24 +9,8 @@ info:
 spring:
   application:
     name: ${info.application.name}
-
-server:
-  port: 8080
-#  port: 8443
-#  ssl:
-#    key-store: classpath:keystore.jks
-#    key-store-password: 1234abc
-#    key-alias: localhost
-#    key-password: 1234abc
-#    trust-store: classpath:truststore.jks
-#    trust-store-password: 1234abc
-#    client-auth: need
-
-zuul:
-  routes:
-    proxy:
-      path: /**
-      url: https://www.frank-rahn.de/
+  profiles:
+    active: homepage
 
 logging:
   level:
@@ -36,3 +20,37 @@ logging:
           proxy:
             sllproxy:
               config: debug
+
+#server:
+#  ssl:
+#    key-store: classpath:keystore.jks
+#    key-store-password: 1234abc
+#    key-alias: localhost
+#    key-password: 1234abc
+#    trust-store: classpath:truststore.jks
+#    trust-store-password: 1234abc
+#    client-auth: need
+
+---
+
+spring:
+  profiles: homepage
+server:
+  port: 8080
+zuul:
+  routes:
+    homepage:
+      path: /**
+      url: https://www.frank-rahn.de/
+
+---
+
+spring:
+  profiles: proxy
+server:
+  port: 8443
+zuul:
+  routes:
+    proxy:
+      path: /**
+      url: http:localhost:8080
