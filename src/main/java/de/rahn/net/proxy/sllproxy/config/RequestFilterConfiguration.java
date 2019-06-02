@@ -20,6 +20,7 @@ import static java.util.stream.Collectors.joining;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.cloud.netflix.zuul.filters.post.LocationRewriteFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.AbstractRequestLoggingFilter;
@@ -64,5 +65,14 @@ class RequestFilterConfiguration {
     loggingFilter.setIncludePayload(false);
 
     return loggingFilter;
+  }
+
+  /**
+   * Ändere das HTTP-Attribute <code>Location</code>, wenn der Service einen 3XX HTTP Statuscode
+   * liefert.
+   */
+  @Bean
+  LocationRewriteFilter locationRewriteFilter() {
+    return new LocationRewriteFilter();
   }
 }

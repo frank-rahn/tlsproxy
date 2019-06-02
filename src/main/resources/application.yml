@@ -24,7 +24,7 @@ server:
 
 zuul:
   routes:
-    products:
+    proxy:
       path: /**
       url: https://www.frank-rahn.de/
 
