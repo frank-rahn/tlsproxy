@@ -21,22 +21,22 @@ logging:
             sllproxy:
               config: debug
 
-#server:
-#  ssl:
+server:
+  ssl:
 #    key-store: classpath:keystore.jks
-#    key-store-password: 1234abc
-#    key-alias: localhost
-#    key-password: 1234abc
+#    key-store-password: ${key-store-password}
+#    key-alias: ${server}
+#    key-password: ${key-password}
 #    trust-store: classpath:truststore.jks
-#    trust-store-password: 1234abc
-#    client-auth: need
+#    trust-store-password: ${key-store-password}
+    client-auth: want
 
 ---
 
 spring:
   profiles: homepage
 server:
-  port: 8080
+  port: 8443
 zuul:
   routes:
     homepage:
@@ -48,9 +48,9 @@ zuul:
 spring:
   profiles: proxy
 server:
-  port: 8443
+  port: 8080
 zuul:
   routes:
     proxy:
       path: /**
-      url: http:localhost:8080
+      url: http://localhost:8080
