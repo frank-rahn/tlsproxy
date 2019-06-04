@@ -55,14 +55,14 @@ class RequestFilterConfiguration {
 
           @Override
           protected void afterRequest(HttpServletRequest requestToUse, String afterMessage) {
-            logger.debug(afterMessage);
+            // Nothing to do
           }
         };
 
-    loggingFilter.setIncludeQueryString(false);
+    loggingFilter.setIncludeQueryString(true);
     loggingFilter.setIncludeClientInfo(true);
     loggingFilter.setIncludeHeaders(true);
-    loggingFilter.setIncludePayload(false);
+    loggingFilter.setIncludePayload(true);
 
     return loggingFilter;
   }
