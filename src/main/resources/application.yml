@@ -47,11 +47,11 @@ spring:
 server:
   port: 8443
 zuul:
+  sensitive-headers: Cookie,Set-Cookie
   routes:
     homepage:
-      path: /**
-      url: https://www.frank-rahn.de/
-  sensitive-headers: ''
+    path: /**
+    url: https://www.frank-rahn.de/
 
 ---
 
