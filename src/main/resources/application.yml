@@ -30,15 +30,15 @@ logging:
             sllproxy:
               config: debug
 
-server:
-  ssl:
+#server:
+#  ssl:
 #    key-store: classpath:keystore.jks
 #    key-store-password: ${key-store-password}
 #    key-alias: ${server}
 #    key-password: ${key-password}
 #    trust-store: classpath:truststore.jks
 #    trust-store-password: ${key-store-password}
-    client-auth: want
+#    client-auth: want
 
 ---
 
