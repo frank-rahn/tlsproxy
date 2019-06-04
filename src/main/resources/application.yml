@@ -51,6 +51,7 @@ zuul:
     homepage:
       path: /**
       url: https://www.frank-rahn.de/
+  sensitive-headers: ''
 
 ---
 
