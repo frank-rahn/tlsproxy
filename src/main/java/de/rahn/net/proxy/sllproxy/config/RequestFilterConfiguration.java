@@ -33,16 +33,16 @@ class RequestFilterConfiguration {
     AbstractRequestLoggingFilter loggingFilter =
         new AbstractRequestLoggingFilter() {
           @Override
-          protected boolean shouldLog(HttpServletRequest request) {
+          protected boolean shouldLog(HttpServletRequest requestToUse) {
             return logger.isDebugEnabled();
           }
 
           @Override
-          protected void beforeRequest(HttpServletRequest request, String message) {
-            logger.debug(message);
+          protected void beforeRequest(HttpServletRequest requestToUse, String beforeMessage) {
+            logger.debug(beforeMessage);
 
             X509Certificate[] x509Certificates =
-                (X509Certificate[]) request.getAttribute("javax.servlet.request.X509Certificate");
+                (X509Certificate[]) requestToUse.getAttribute("javax.servlet.request.X509Certificate");
 
             if (x509Certificates != null) {
               String certificates =
@@ -54,8 +54,8 @@ class RequestFilterConfiguration {
           }
 
           @Override
-          protected void afterRequest(HttpServletRequest request, String message) {
-            logger.debug(message);
+          protected void afterRequest(HttpServletRequest requestToUse, String afterMessage) {
+            logger.debug(afterMessage);
           }
         };
 
