@@ -11,6 +11,9 @@ spring:
     name: ${info.application.name}
   profiles:
     active: homepage
+  jackson:
+    serialization:
+      indent-output: true
 
 management:
   endpoint:
@@ -45,20 +48,21 @@ logging:
 spring:
   profiles: homepage
 server:
-  port: 8443
+  port: 8080
 zuul:
   sensitive-headers: Cookie,Set-Cookie
+  include-debug-header: true
   routes:
     homepage:
-    path: /**
-    url: https://www.frank-rahn.de/
+      path: /**
+      url: https://www.frank-rahn.de/
 
 ---
 
 spring:
   profiles: proxy
 server:
-  port: 8080
+  port: 8443
 zuul:
   routes:
     proxy:
