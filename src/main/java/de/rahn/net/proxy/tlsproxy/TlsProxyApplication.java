@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package de.rahn.net.proxy.sllproxy;
+package de.rahn.net.proxy.tlsproxy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,9 +21,9 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
 @EnableZuulProxy
-public class SllProxyApplication {
+public class TlsProxyApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(SllProxyApplication.class, args);
+    SpringApplication.run(TlsProxyApplication.class, args);
   }
 }

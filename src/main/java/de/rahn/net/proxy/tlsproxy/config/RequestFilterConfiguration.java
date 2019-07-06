@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package de.rahn.net.proxy.sllproxy.config;
+package de.rahn.net.proxy.tlsproxy.config;
 
 import static java.util.stream.Collectors.joining;
 

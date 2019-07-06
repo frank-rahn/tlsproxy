@@ -27,10 +27,10 @@
   </parent>
 
   <groupId>de.rahn.net.proxy</groupId>
-  <artifactId>sllproxy</artifactId>
+  <artifactId>tlsproxy</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>SLL-Proxy</name>
-  <description>Demo Projekt eines SLL-Proxy auf Basis von Spring Boot</description>
+  <name>TLS-Proxy</name>
+  <description>Demo Projekt eines TLS-Proxy auf Basis von Spring Boot</description>
 
   <properties>
     <!-- Standard -->
@@ -72,6 +72,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <scope>runtime</scope>
+      <optional>true</optional>
     </dependency>
 
     <!-- Test -->

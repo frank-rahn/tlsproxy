@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package de.rahn.net.proxy.sllproxy;
+package de.rahn.net.proxy.tlsproxy;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SllProxyApplicationTests {
+public class TlsProxyApplicationTests {
 
   @Test
   public void contextLoads() {
