@@ -1,0 +1,24 @@
+= Erzeuge ein leeren Truststore
+Frank Rahn <https://github.com/frank-rahn[@frank-rahn]>
+:toc:
+:toclevels: 3
+:toc-title: Inhaltsverzeichnis
+:toc-placement!:
+:sectanchors:
+:include-dir: _includes
+
+toc::[]
+
+.Mit dem Java-Keytool
+[source,sh]
+----
+$ keytool -genkeypair -dname "CN=temp" -alias temp -keystore truststore.jks \ # <1>
+> -keypass <key-password> -storepass <truststore-password> # <2>
+$ keytool -delete -alias temp -keystore truststore.jks \ # <3>
+> -storepass <truststore-password>
+----
+<1> Erzeugen eines Truststore mit einem temporären Schlüsselpaar
+<2> Passwort des Schlüsselpaars und des Truststores
+<3> Löschen des temporären Schlüsselpaar aus dem Truststores
+
+include::{include-dir}/footer.adoc[]
