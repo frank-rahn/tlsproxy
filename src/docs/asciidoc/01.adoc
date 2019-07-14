@@ -15,11 +15,10 @@ $ keytool -genkeypair -dname "CN=temp" -alias temp -keystore truststore.jks \ \<
 > -keypass <key-password> -storepass <truststore-password> \<2>
 $ keytool -delete -alias temp -keystore truststore.jks \ \<3>
 > -storepass <truststore-password>
- ----
+----
 <1> Erzeugen eines Truststore mit einem temporären Schlüsselpaar.
 <2> Passwort des Schlüsselpaars und des Truststores.
 <3> Löschen des temporären Schlüsselpaar aus dem Truststores.
-----
 
 == Homepage des Autors
 https://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=tls-proxy&utm_content=top[Frank W. Rahn]
