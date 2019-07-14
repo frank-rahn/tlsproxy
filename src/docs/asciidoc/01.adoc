@@ -8,12 +8,12 @@ Frank Rahn <https://github.com/frank-rahn[@frank-rahn]>
 
 toc::[]
 
-.Mit dem Java-Keytool
+.Mit dem Java-`Keytool`
 [source,sh]
 ----
-$ keytool -genkeypair -dname "CN=temp" -alias temp -keystore truststore.jks \ <1>
+$ keytool -genkeypair -dname "CN=temp" -alias temp -keystore truststore.jks \\ <1>
 > -keypass <key-password> -storepass <truststore-password> <2>
-$ keytool -delete -alias temp -keystore truststore.jks \ <3>
+$ keytool -delete -alias temp -keystore truststore.jks \\ <3>
 > -storepass <truststore-password>
 ----
 <1> Erzeugen eines Truststore mit einem temporären Schlüsselpaar
