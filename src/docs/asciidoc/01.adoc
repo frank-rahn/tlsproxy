@@ -12,9 +12,9 @@ toc::[]
 [source,bash]
 ----
 $ keytool -genkeypair -dname "CN=temp" -alias temp -keystore truststore.jks \
-> -keypass _key-password_ -storepass _truststore-password_
+> -keypass ${key_password} -storepass ${truststore_password}
 $ keytool -delete -alias temp -keystore truststore.jks \
-> -storepass _truststore-password_
+> -storepass ${truststore_password}
 ----
 1. Erzeugen eines Truststore mit einem temporären Schlüsselpaar.
 2. Löschen des temporären Schlüsselpaar aus dem Truststores.
