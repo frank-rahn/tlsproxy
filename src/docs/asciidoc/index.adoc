@@ -1,14 +1,15 @@
 = TLS-Proxy
 Frank Rahn <https://github.com/frank-rahn[@frank-rahn]>
 :toc:
+:toc-placement!:
 :toclevels: 3
 :toc-title: Inhaltsverzeichnis
-:toc-placement!:
 :sectanchors:
-:include-dir: _includes
 
 toc::[]
 
+== Inhalt
 * link:01.adoc[Erzeuge ein leeren Truststore]
 
-include::{include-dir}/footer.adoc[]
+== Homepage des Autors
+https://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=tls-proxy&utm_content=top[Frank W. Rahn]

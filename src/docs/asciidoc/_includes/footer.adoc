@@ -1,2 +1,0 @@
-== Homepage des Autors
-https://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=tls-proxy&utm_content=top[Frank W. Rahn]
