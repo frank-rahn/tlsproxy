@@ -22,8 +22,63 @@ $ keytool -importcert -alias rootCA -keystore truststore.jks \
 > -v -storepass password
 ----
 
-=== Beschreibung
-...
+1. Es wird ein RSA-Zertifikat *_Root CA_* erzeugt.
+2. Das Zertifikat wird 365 Tag gültig sein und eine Schlüssellänge von 2048 besitzen.
+3. Das Zertifikat wird in den Zertifikatsspeicher `rootca.pem` exportiert.
+4. Das Root-Zertifikat wird in den Java-Truststore aufgenommen.
+
+== OpenSSL
+[source,bash]
+----
+$ openssl req -config rootca.cnf -new -x509 \
+> -sha256 -newkey rsa:2048 -nodes -keyout private.key.pem \
+> -days 365 -out rootca.pem
+$ openssl req -config rootca.cnf -new \
+> -sha256 -newkey rsa:2048 -nodes -keyout private.key.pem \
+> -days 365 -out rootca.req.pem
+$ openssl rsa -in private.pem -out private.key
+$ openssl x509 -in rootca.csr -out rootca.pem -req -signkey private.key -days 365
+----
+
+1. Erzeuge ein selbst-signiertes Zertifikat.
+2. Erzeuge einen signieren Request.
+
+[source,vi]
+.Datei rootca.cnf
+----
+[req]
+prompt = no
+default_bits = 2048
+distinguished_name  = subject
+req_extensions = req_ext
+x509_extensions     = x509_ext
+string_mask         = utf8only
+
+[subject]
+C = DE
+O = Frank W. Rahn
+CN = Root CA
+
+[req_ext]
+subjectKeyIdentifier = hash
+basicConstraints = critical, CA:FALSE
+keyUsage = digitalSignature, keyEncipherment
+subjectAltName      = @alternate_names
+
+[x509_ext]
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid,issuer
+basicConstraints    = CA:FALSE
+keyUsage            = digitalSignature, keyEncipherment
+subjectAltName      = @alternate_names
+nsComment           = "OpenSSL Generated Certificate"
+
+[alternate_names]
+DNS.1       = example.com
+DNS.2       = www.example.com
+DNS.3       = mail.example.com
+DNS.4       = ftp.example.com
+----
 
 == Homepage des Autors
 https://www.frank-rahn.de/?utm_source=github&utm_medium=readme&utm_campaign=tls-proxy&utm_content=top[Frank W. Rahn]

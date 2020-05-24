@@ -15,64 +15,35 @@
  */
 package de.rahn.net.proxy.tlsproxy.config;
 
-import static java.util.stream.Collectors.joining;
-
-import java.security.cert.X509Certificate;
-import java.util.Arrays;
-import javax.servlet.http.HttpServletRequest;
-import org.springframework.cloud.netflix.zuul.filters.post.LocationRewriteFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.filter.AbstractRequestLoggingFilter;
+import org.springframework.web.server.WebFilter;
 
 @Configuration
 class RequestFilterConfiguration {
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(RequestFilterConfiguration.class);
+
   @Bean
-  AbstractRequestLoggingFilter commonsRequestLoggingFilter() {
-    AbstractRequestLoggingFilter loggingFilter =
-        new AbstractRequestLoggingFilter() {
-          @Override
-          protected boolean shouldLog(HttpServletRequest requestToUse) {
-            return logger.isDebugEnabled();
-          }
-
-          @Override
-          protected void beforeRequest(HttpServletRequest requestToUse, String beforeMessage) {
-            logger.debug(beforeMessage);
-
-            X509Certificate[] x509Certificates =
-                (X509Certificate[]) requestToUse.getAttribute("javax.servlet.request.X509Certificate");
-
-            if (x509Certificates != null) {
-              String certificates =
-                  Arrays.stream(x509Certificates)
-                      .map(certificate -> " " + certificate.toString())
-                      .collect(joining("\n", "X509Certificates [\n", "]"));
-              logger.debug(certificates);
-            }
-          }
-
-          @Override
-          protected void afterRequest(HttpServletRequest requestToUse, String afterMessage) {
-            // Nothing to do
-          }
-        };
-
-    loggingFilter.setIncludeQueryString(true);
-    loggingFilter.setIncludeClientInfo(true);
-    loggingFilter.setIncludeHeaders(true);
-    loggingFilter.setIncludePayload(true);
-
-    return loggingFilter;
+  WebFilter commonsRequestLoggingFilter() {
+    return (exchange, chain) ->
+        chain
+            .filter(exchange)
+            .doFinally(
+                signalType -> {
+                  LOGGER.debug("Request-SSL-Info={}", exchange.getRequest().getSslInfo());
+                  LOGGER.debug("Request-Headers={}", exchange.getRequest().getHeaders());
+                });
   }
 
-  /**
-   * Ändere das HTTP-Attribute <code>Location</code>, wenn der Service einen 3XX HTTP Statuscode
-   * liefert.
-   */
-  @Bean
-  LocationRewriteFilter locationRewriteFilter() {
-    return new LocationRewriteFilter();
-  }
+  //  /**
+  //   * Ändere das HTTP-Attribute <code>Location</code>, wenn der Service einen 3XX HTTP Statuscode
+  //   * liefert.
+  //   */
+  //  @Bean
+  //  LocationRewriteFilter locationRewriteFilter() {
+  //    return new LocationRewriteFilter();
+  //  }
 }

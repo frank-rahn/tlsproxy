@@ -17,10 +17,8 @@ package de.rahn.net.proxy.tlsproxy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
-@EnableZuulProxy
 public class TlsProxyApplication {
 
   public static void main(String[] args) {

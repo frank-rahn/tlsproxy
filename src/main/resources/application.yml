@@ -30,8 +30,12 @@ logging:
       rahn:
         net:
           proxy:
-            sllproxy:
+            tlsproxy:
               config: debug
+    org:
+      springframework:
+        cloud:
+          gateway: debug
 
 #server:
 #  ssl:
@@ -47,24 +51,29 @@ logging:
 
 spring:
   profiles: homepage
+  cloud:
+    gateway:
+      routes:
+        - id: homepage
+          uri: https://www.frank-rahn.de/
+          predicates:
+            - Path=/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RemoveResponseHeader=Set-Cookie
 server:
   port: 8080
-zuul:
-  sensitive-headers: Cookie,Set-Cookie
-  include-debug-header: true
-  routes:
-    homepage:
-      path: /**
-      url: https://www.frank-rahn.de/
 
 ---
 
 spring:
   profiles: proxy
+  cloud:
+    gateway:
+      routes:
+        - id: proxy
+          uri: http://localhost:8080
+          predicates:
+            - Path=/{segment}
 server:
   port: 8443
-zuul:
-  routes:
-    proxy:
-      path: /**
-      url: http://localhost:8080

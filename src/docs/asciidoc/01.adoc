@@ -17,7 +17,6 @@ $ keytool -delete -alias temp -keystore truststore.jks \
 > -storepass password
 ----
 
-=== Beschreibung
 1. Erzeugen eines Truststore mit einem temporären Schlüsselpaar.
 2. Löschen des temporären Schlüsselpaar aus dem Truststore.
 
